@@ -1,0 +1,14 @@
+C:\Alex\Desafio\Desafio\Data\bin\Debug\Data.dll
+C:\Alex\Desafio\Desafio\Data\bin\Debug\Data.pdb
+C:\Alex\Desafio\Desafio\Data\bin\Debug\FluentNHibernate.dll
+C:\Alex\Desafio\Desafio\Data\bin\Debug\Iesi.Collections.dll
+C:\Alex\Desafio\Desafio\Data\bin\Debug\Models.dll
+C:\Alex\Desafio\Desafio\Data\bin\Debug\NHibernate.dll
+C:\Alex\Desafio\Desafio\Data\bin\Debug\Models.pdb
+C:\Alex\Desafio\Desafio\Data\bin\Debug\FluentNHibernate.pdb
+C:\Alex\Desafio\Desafio\Data\bin\Debug\FluentNHibernate.xml
+C:\Alex\Desafio\Desafio\Data\bin\Debug\Iesi.Collections.xml
+C:\Alex\Desafio\Desafio\Data\bin\Debug\NHibernate.xml
+C:\Alex\Desafio\Desafio\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Alex\Desafio\Desafio\Data\obj\Debug\Data.dll
+C:\Alex\Desafio\Desafio\Data\obj\Debug\Data.pdb

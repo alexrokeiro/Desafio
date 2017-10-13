@@ -1,0 +1,11 @@
+C:\Alex\Desafio\Desafio\Message\bin\Debug\Message.dll
+C:\Alex\Desafio\Desafio\Message\bin\Debug\Message.pdb
+C:\Alex\Desafio\Desafio\Message\obj\Debug\Message.csprojResolveAssemblyReference.cache
+C:\Alex\Desafio\Desafio\Message\obj\Debug\Message.dll
+C:\Alex\Desafio\Desafio\Message\obj\Debug\Message.pdb
+C:\Alex\Desafio\Desafio\Message\bin\Debug\Newtonsoft.Json.dll
+C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Net.Http.Formatting.dll
+C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Web.Http.dll
+C:\Alex\Desafio\Desafio\Message\bin\Debug\Newtonsoft.Json.xml
+C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Net.Http.Formatting.xml
+C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Web.Http.xml
