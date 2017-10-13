@@ -1,0 +1,11 @@
+C:\Repos\Desafio\Infrastructure\bin\Debug\Infrastructure.dll
+C:\Repos\Desafio\Infrastructure\bin\Debug\Infrastructure.pdb
+C:\Repos\Desafio\Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Repos\Desafio\Infrastructure\bin\Debug\System.Net.Http.Formatting.dll
+C:\Repos\Desafio\Infrastructure\bin\Debug\System.Web.Http.dll
+C:\Repos\Desafio\Infrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Repos\Desafio\Infrastructure\bin\Debug\System.Net.Http.Formatting.xml
+C:\Repos\Desafio\Infrastructure\bin\Debug\System.Web.Http.xml
+C:\Repos\Desafio\Infrastructure\obj\Debug\Infrastructure.csprojResolveAssemblyReference.cache
+C:\Repos\Desafio\Infrastructure\obj\Debug\Infrastructure.dll
+C:\Repos\Desafio\Infrastructure\obj\Debug\Infrastructure.pdb

@@ -34,3 +34,11 @@ C:\Repos\Desafio\EntityService\bin\Debug\Iesi.Collections.xml
 C:\Repos\Desafio\EntityService\obj\Debug\EntityService.csprojResolveAssemblyReference.cache
 C:\Repos\Desafio\EntityService\obj\Debug\EntityService.dll
 C:\Repos\Desafio\EntityService\obj\Debug\EntityService.pdb
+C:\Repos\Desafio\EntityService\bin\Debug\Infrastructure.dll
+C:\Repos\Desafio\EntityService\bin\Debug\System.Web.Http.dll
+C:\Repos\Desafio\EntityService\bin\Debug\System.Net.Http.Formatting.dll
+C:\Repos\Desafio\EntityService\bin\Debug\Newtonsoft.Json.dll
+C:\Repos\Desafio\EntityService\bin\Debug\Infrastructure.pdb
+C:\Repos\Desafio\EntityService\bin\Debug\System.Web.Http.xml
+C:\Repos\Desafio\EntityService\bin\Debug\System.Net.Http.Formatting.xml
+C:\Repos\Desafio\EntityService\bin\Debug\Newtonsoft.Json.xml

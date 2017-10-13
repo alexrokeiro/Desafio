@@ -1,4 +1,5 @@
 ﻿using EntityService;
+using Infrastructure;
 using Message;
 using Message.Response;
 using System;
@@ -16,43 +17,43 @@ namespace Desafio.Controllers
         private UsuarioEntityService entityService;
 
         [HttpPost]
-        public IHttpActionResult Create([FromBody]CriarUsuarioRequest request )
+        public ResultResponse<CriarUsuarioResponse> Create([FromBody]CriarUsuarioRequest request )
         {
             entityService = new UsuarioEntityService();
-            entityService.AdicionarUsuario(request);
-            return Ok();
+            return entityService.AdicionarUsuario(request);
+            
         }
 
         [HttpPut]
-        public IHttpActionResult Update([FromBody]AlterarUsuarioRequest request)
+        public ResultResponse<AlterarUsuarioResponse> Update([FromBody]AlterarUsuarioRequest request)
         {
             entityService = new UsuarioEntityService();
-            entityService.AlterarUsuario(request);
-            return Ok();
+            return entityService.AlterarUsuario(request);
+            
         }
 
         [HttpGet]
-        public ListarUsuarioResponse Get([FromUri]ListarUsuariosRequest request)
+        public ResultResponse<ListarUsuarioResponse> Get([FromUri]ListarUsuariosRequest request)
         {
             entityService = new UsuarioEntityService();
             return entityService.ListarUsuario(request);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromBody]DeletarUsuarioRequest request)
+        public ResultResponse<DeletarUsuarioResponse> Delete([FromBody]DeletarUsuarioRequest request)
         {
             entityService = new UsuarioEntityService();
-            entityService.ExcluirUsuario(request);
-            return Ok();
+            return entityService.ExcluirUsuario(request);
+            
         }
 
         [HttpPost]
         [Route("dependente")]
-        public IHttpActionResult CreateDepedente([FromBody]AdicionarDependeteRequest request)
+        public ResultResponse<AdicionarDependenteResponse> CreateDepedente([FromBody]AdicionarDependeteRequest request)
         {
             entityService = new UsuarioEntityService();
-            entityService.AdicionarDependente(request);
-            return Ok();
+            return entityService.AdicionarDependente(request);
+            
         }
     }
 }

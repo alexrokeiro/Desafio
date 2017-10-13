@@ -9,3 +9,16 @@ C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Web.Http.dll
 C:\Alex\Desafio\Desafio\Message\bin\Debug\Newtonsoft.Json.xml
 C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Net.Http.Formatting.xml
 C:\Alex\Desafio\Desafio\Message\bin\Debug\System.Web.Http.xml
+C:\Repos\Desafio\Message\bin\Debug\Message.dll
+C:\Repos\Desafio\Message\bin\Debug\Message.pdb
+C:\Repos\Desafio\Message\bin\Debug\Infrastructure.dll
+C:\Repos\Desafio\Message\bin\Debug\Newtonsoft.Json.dll
+C:\Repos\Desafio\Message\bin\Debug\System.Net.Http.Formatting.dll
+C:\Repos\Desafio\Message\bin\Debug\System.Web.Http.dll
+C:\Repos\Desafio\Message\bin\Debug\Infrastructure.pdb
+C:\Repos\Desafio\Message\bin\Debug\Newtonsoft.Json.xml
+C:\Repos\Desafio\Message\bin\Debug\System.Net.Http.Formatting.xml
+C:\Repos\Desafio\Message\bin\Debug\System.Web.Http.xml
+C:\Repos\Desafio\Message\obj\Debug\Message.csprojResolveAssemblyReference.cache
+C:\Repos\Desafio\Message\obj\Debug\Message.dll
+C:\Repos\Desafio\Message\obj\Debug\Message.pdb

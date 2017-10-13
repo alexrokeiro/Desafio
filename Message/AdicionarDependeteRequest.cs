@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace Message
 {
     [DataContract]
-    public class AdicionarDependeteRequest
+    public class AdicionarDependeteRequest : BaseRequest
     {
         [DataMember(Name = "idUsuario")]
         public int IdUsuario { get; set; }

@@ -48,6 +48,10 @@
       <Project>{79526588-E169-44D7-B65A-2017BDC39FEC}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{DECEC95C-16D2-43D5-A77C-1DD028CB45F3}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Message\Message.csproj">
       <Project>{C481ED5C-2DF9-411A-91E8-1A7B0C83CD4D}</Project>
       <Name>Message</Name>

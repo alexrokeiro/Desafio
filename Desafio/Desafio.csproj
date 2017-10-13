@@ -323,6 +323,10 @@
       <Project>{5FA4BE98-9215-4E8C-9316-1CC105CD1019}</Project>
       <Name>EntityService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{decec95c-16d2-43d5-a77c-1dd028cb45f3}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Message\Message.csproj">
       <Project>{C481ED5C-2DF9-411A-91E8-1A7B0C83CD4D}</Project>
       <Name>Message</Name>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Message
 {
     [DataContract]
-    public class AlterarUsuarioRequest
+    public class AlterarUsuarioRequest : BaseRequest
     {
         [DataMember(Name = "id")]
         [Required(ErrorMessage = "Campo id é obrigatório.")]
