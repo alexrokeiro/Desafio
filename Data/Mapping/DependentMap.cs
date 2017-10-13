@@ -14,7 +14,7 @@ namespace Data.Mapping
         {
             Id(x => x.Id);
             Map(x => x.Name);
-            References(x => x.User) // you'll need 'Property' in your class definition too
+            References(x => x.User)
             .Column("Id_User")
             .Cascade.All();
         }
