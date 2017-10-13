@@ -93,7 +93,9 @@ namespace EntityService
                 Email = usuario.Email,
                 genre = usuario.Genre,
                 name = usuario.Name,
-                id = usuario.Id
+                id = usuario.Id,
+                QuantidadeDependentes = usuario.Dependents.Count(),
+                Role = usuario.Role.Name
             };
         }
     }

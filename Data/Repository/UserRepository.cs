@@ -1,6 +1,7 @@
 ﻿using Data.Nhibernate;
 using Models;
 using NHibernate;
+using NHibernate.Criterion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,19 @@ namespace Data.Repository
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                return session.QueryOver<User>().List().ToList();
+                var users = new List<User>();
+                if (like)
+                    users = session.CreateCriteria<User>().Add(Restrictions.InsensitiveLike("Name", name, MatchMode.Anywhere)).List<User>().ToList();
+                else
+                    users = session.CreateCriteria<User>().Add(Restrictions.InsensitiveLike("Name", name, MatchMode.Exact)).List<User>().ToList();
+
+                foreach (var user in users)
+                {
+                    NHibernateUtil.Initialize(user.Role);
+                    NHibernateUtil.Initialize(user.Dependents);
+                }
+
+                return users;
             }
         }
 
