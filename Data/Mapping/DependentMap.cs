@@ -12,11 +12,10 @@ namespace Data.Mapping
     {
         public DependentMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.Name);
-            References(x => x.User)
-            .Column("Id_User")
-            .Cascade.All();
+            Map(x => x.IdUser,"Id_User");
+            Table("Dependent");
         }
     }
 }

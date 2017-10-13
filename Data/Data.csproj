@@ -57,6 +57,7 @@
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Nhibernate\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DependentRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>

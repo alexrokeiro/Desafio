@@ -14,6 +14,7 @@ namespace Data.Mapping
         {
             Id(x => x.Id);
             Map(x => x.Name);
+            Table("Role");
         }
             
     }

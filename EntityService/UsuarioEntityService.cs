@@ -14,6 +14,7 @@ namespace EntityService
     {
         private UserRepository usuarioRepositoty;
         private RoleRepository roleRepositoty;
+        private DependentRepository dependentRepository;
 
         public ListarUsuarioResponse ListarUsuario(ListarUsuariosRequest request)
         {
@@ -55,9 +56,10 @@ namespace EntityService
         public void AdicionarDependente(AdicionarDependeteRequest request)
         {
             usuarioRepositoty = new UserRepository();
+            dependentRepository = new DependentRepository();
             var user = usuarioRepositoty.ObterPorId(request.IdUsuario);
-            user.Dependents.Add(new Dependent() { Name = request.Name });
-            usuarioRepositoty.Atualizar(user);
+            var dependet = new Dependent() { Name = request.Name, IdUser = user.Id };
+            dependentRepository.Salvar(dependet);
         }
 
         private List<UsuarioMessage> Create()
