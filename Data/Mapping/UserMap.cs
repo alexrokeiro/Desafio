@@ -18,8 +18,8 @@ namespace Data.Mapping
             Map(x => x.Email, "Email");
             Map(x => x.Genre, "Genre");
             References(x => x.Role, "IdRole");
-            HasMany(x => x.Dependents).KeyColumn("Id_User").Cascade.All();
-            Table("Usuario");
+            HasMany(x => x.Dependents).KeyColumn("IdUser").Cascade.All();
+            Table("[dbo].[User]");
         }
     }
 }
