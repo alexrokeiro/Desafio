@@ -27,7 +27,6 @@ namespace Data.Repository
             {
                 using (var tran = session.BeginTransaction())
                 {
-                    //session.SaveOrUpdate(usuario.Dependents);
                     session.Update(usuario);
                     tran.Commit();
                 }

@@ -18,7 +18,7 @@ namespace Domain.Contract.EntityService.Contract
 
         ResultResponse<DeleteUserResponse> DeleteUser(DeleteUserRequest request);
 
-        ResultResponse<AlterUserResponse> AlterUser(AlterUserRequest request);
+        ResultResponse<AlterUserResponse> UpdateUser(AlterUserRequest request);
 
         ResultResponse<AddDependentResponse> AddDependent(AddDependentRequest request);
 

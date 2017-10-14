@@ -93,7 +93,7 @@ namespace Domain.Implementations.EntityService.Imp
             
         }
 
-        public ResultResponse<AlterUserResponse> AlterUser(AlterUserRequest request)
+        public ResultResponse<AlterUserResponse> UpdateUser(AlterUserRequest request)
         {
             ResultResponse<AlterUserResponse> response = new ResultResponse<AlterUserResponse>(request);
             try

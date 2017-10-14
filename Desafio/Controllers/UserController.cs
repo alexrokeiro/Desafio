@@ -25,7 +25,7 @@ namespace Desafio.Controllers
         [HttpPut]
         public ResultResponse<AlterUserResponse> Update([FromBody]AlterUserRequest request)
         {
-            return userEntityService.AlterUser(request);
+            return userEntityService.UpdateUser(request);
         }
 
         [HttpGet]
