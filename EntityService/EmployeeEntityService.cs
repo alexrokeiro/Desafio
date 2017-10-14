@@ -34,7 +34,7 @@ namespace Domain.Implementations.EntityService.Imp
             }
             catch (System.Exception)
             {
-                response.CreateResponseInternalServerError("Não foi possivel listar os empregados");
+                response.CreateResponseInternalServerError("Não foi possivel listar os empregados.");
                 return response;
             }
             
@@ -49,7 +49,7 @@ namespace Domain.Implementations.EntityService.Imp
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
-                    response.CreateResponseBadRequest("Cargo não existe.");
+                    response.CreateResponseBadRequest("Cargo não encontrado.");
                     return response;
                 }
 
@@ -75,7 +75,7 @@ namespace Domain.Implementations.EntityService.Imp
                 var employee = EmployeeRepositoty.GetById(request.id,true);
                 if (employee == null)
                 {
-                    response.CreateResponseBadRequest("Empregado não encontrado");
+                    response.CreateResponseBadRequest("Empregado não encontrado.");
                     return response;
                 }
                 employee.Dependents.ToList().ForEach(p => dependentRepository.Delete(p));
@@ -87,7 +87,7 @@ namespace Domain.Implementations.EntityService.Imp
             }
             catch (System.Exception ex)
             {
-                response.CreateResponseInternalServerError("Não foi possível excluir o empregado");
+                response.CreateResponseInternalServerError("Não foi possível excluir o empregado.");
                 return response;
             }
             
@@ -108,7 +108,7 @@ namespace Domain.Implementations.EntityService.Imp
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
-                    response.CreateResponseBadRequest("Cargo não encontrada");
+                    response.CreateResponseBadRequest("Cargo não encontrado.");
                     return response;
                 }
 

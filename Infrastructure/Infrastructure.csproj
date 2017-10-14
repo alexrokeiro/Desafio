@@ -58,7 +58,6 @@
     <Compile Include="IHttpActionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultResponse.cs" />
-    <Compile Include="ValidationMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
