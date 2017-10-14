@@ -18,11 +18,11 @@ namespace Data.Nhibernate
                 )
                .Mappings(m =>
                           m.FluentMappings
-                              .AddFromAssemblyOf<User>()
+                              .AddFromAssemblyOf<Employee>()
                               .AddFromAssemblyOf<Role>()
                               .AddFromAssemblyOf<Dependent>())
                .Mappings(m =>
-                          m.FluentMappings.Add<UserMap>()
+                          m.FluentMappings.Add<EmployeeMap>()
                           .Add<RoleMap>()
                           .Add<DependentMap>())
                 .ExposeConfiguration(cfg => new SchemaExport(cfg)

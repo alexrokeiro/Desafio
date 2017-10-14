@@ -56,16 +56,16 @@
   <ItemGroup>
     <Compile Include="AddDependentResponse.cs" />
     <Compile Include="AddDependentRequest.cs" />
-    <Compile Include="AlterUserRequest.cs" />
-    <Compile Include="AlterUserResponse.cs" />
-    <Compile Include="CreateUserRequest.cs" />
-    <Compile Include="CreateUserResponse.cs" />
-    <Compile Include="DeleteUserRequest.cs" />
-    <Compile Include="DeleteUserResponse.cs" />
-    <Compile Include="ListUserRequest.cs" />
+    <Compile Include="AlterEmployeeRequest.cs" />
+    <Compile Include="AlterEmployeeResponse.cs" />
+    <Compile Include="CreateEmployeeRequest.cs" />
+    <Compile Include="CreateEmployeeResponse.cs" />
+    <Compile Include="DeleteEmployeeRequest.cs" />
+    <Compile Include="DeleteEmployeeResponse.cs" />
+    <Compile Include="ListEmployeeRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ListUserResponse.cs" />
-    <Compile Include="UserMessage.cs" />
+    <Compile Include="ListEmployeeResponse.cs" />
+    <Compile Include="EmployeeMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

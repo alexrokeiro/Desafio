@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 namespace Domain.Message.Message
 {
     [DataContract]
-    public class ListUserResponse : BaseResponse
+    public class ListEmployeeResponse : BaseResponse
     {
         [DataMember(Name = "id")]
-        public List<UserMessage> Usuarios { get; set; }
+        public List<EmployeeMessage> Usuarios { get; set; }
 
     }
 }

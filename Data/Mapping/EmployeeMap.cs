@@ -3,9 +3,9 @@ using FluentNHibernate.Mapping;
 
 namespace Data.Mapping
 {
-    public class UserMap : ClassMap<User>
+    public class EmployeeMap : ClassMap<Employee>
     {
-        public UserMap()
+        public EmployeeMap()
         {
             Id(x => x.Id, "id").GeneratedBy.Identity();
             Map(x => x.Name);

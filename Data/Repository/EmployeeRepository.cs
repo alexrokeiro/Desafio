@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace Data.Repository
 {
-    public class UserRepository
+    public class EmployeeRepository
     {
 
-        public void Save(User usuario)
+        public void Save(Employee usuario)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -18,7 +18,7 @@ namespace Data.Repository
             }
         }
 
-        public void Update(User usuario)
+        public void Update(Employee usuario)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -30,7 +30,7 @@ namespace Data.Repository
             }
         }
 
-        public void Delete(User usuario)
+        public void Delete(Employee usuario)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -42,15 +42,15 @@ namespace Data.Repository
             }
         }
 
-        public List<User> List(string name, bool like)
+        public List<Employee> List(string name, bool like)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                var users = new List<User>();
+                var users = new List<Employee>();
                 if (like)
-                    users = session.CreateCriteria<User>().Add(Restrictions.InsensitiveLike("Name", name, MatchMode.Anywhere)).List<User>().ToList();
+                    users = session.CreateCriteria<Employee>().Add(Restrictions.InsensitiveLike("Name", name, MatchMode.Anywhere)).List<Employee>().ToList();
                 else
-                    users = session.CreateCriteria<User>().Add(Restrictions.InsensitiveLike("Name", name, MatchMode.Exact)).List<User>().ToList();
+                    users = session.CreateCriteria<Employee>().Add(Restrictions.InsensitiveLike("Name", name, MatchMode.Exact)).List<Employee>().ToList();
 
                 foreach (var user in users)
                 {
@@ -62,11 +62,11 @@ namespace Data.Repository
             }
         }
 
-        public User GetById(int id, bool loadRelationships = false)
+        public Employee GetById(int id, bool loadRelationships = false)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                var user = session.Get<User>(id);
+                var user = session.Get<Employee>(id);
                 if (user == null)
                     return user;
 

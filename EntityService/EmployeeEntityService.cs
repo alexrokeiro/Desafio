@@ -8,26 +8,26 @@ using System.Linq;
 
 namespace Domain.Implementations.EntityService.Imp
 {
-    public class UserEntityService : IUserEntityService
+    public class EmployeeEntityService : IEmployeeEntityService
     {
-        private UserRepository userRepositoty;
+        private EmployeeRepository userRepositoty;
         private RoleRepository roleRepositoty;
         private DependentRepository dependentRepository;
 
-        public UserEntityService()
+        public EmployeeEntityService()
         {
-            userRepositoty = new UserRepository();
+            userRepositoty = new EmployeeRepository();
             roleRepositoty = new RoleRepository();
             dependentRepository = new DependentRepository();
         }
 
-        public ResultResponse<ListUserResponse> ListUsuario(ListUserRequest request)
+        public ResultResponse<ListEmployeeResponse> ListUsuario(ListEmployeeRequest request)
         {
-            ResultResponse<ListUserResponse> response = new ResultResponse<ListUserResponse>();
+            ResultResponse<ListEmployeeResponse> response = new ResultResponse<ListEmployeeResponse>(request);
             try
             {
                 var usuarios = userRepositoty.List(request.name, request.like);
-                response.Retorno = new ListUserResponse();
+                response.Retorno = new ListEmployeeResponse();
                 response.Retorno.Usuarios = MapToMessage(usuarios);
                 return response;
             }
@@ -40,11 +40,11 @@ namespace Domain.Implementations.EntityService.Imp
         }
 
 
-        public ResultResponse<CreateUserResponse> AddUser(CreateUserRequest request)
+        public ResultResponse<CreateEmployeeResponse> AddUser(CreateEmployeeRequest request)
         {
-            ResultResponse<CreateUserResponse> response = new ResultResponse<CreateUserResponse>(request);
-            //try
-            //{
+            ResultResponse<CreateEmployeeResponse> response = new ResultResponse<CreateEmployeeResponse>(request);
+            try
+            {
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
@@ -52,23 +52,23 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                var usuario = User.CreateUser(request.Name, request.Email, request.Genre, request.Birth, role);
+                var usuario = Employee.CreateEmployee(request.Name, request.Email, request.Genre, request.Birth, role);
                 userRepositoty.Save(usuario);
 
                 return response;
-            //}
-            //catch (System.Exception)
-            //{
-            //    response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
-            //    return response;
-            //}
-            
-            
+            }
+            catch (System.Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
+                return response;
+            }
+
+
         }
 
-        public ResultResponse<DeleteUserResponse> DeleteUser(DeleteUserRequest request)
+        public ResultResponse<DeleteEmployeeResponse> DeleteUser(DeleteEmployeeRequest request)
         {
-            ResultResponse<DeleteUserResponse> response = new ResultResponse<DeleteUserResponse>(request);
+            ResultResponse<DeleteEmployeeResponse> response = new ResultResponse<DeleteEmployeeResponse>(request);
             try
             {
                 var user = userRepositoty.GetById(request.id,true);
@@ -92,9 +92,9 @@ namespace Domain.Implementations.EntityService.Imp
             
         }
 
-        public ResultResponse<AlterUserResponse> UpdateUser(AlterUserRequest request)
+        public ResultResponse<AlterEmployeeResponse> UpdateUser(AlterEmployeeRequest request)
         {
-            ResultResponse<AlterUserResponse> response = new ResultResponse<AlterUserResponse>(request);
+            ResultResponse<AlterEmployeeResponse> response = new ResultResponse<AlterEmployeeResponse>(request);
             try
             {
                 var user = userRepositoty.GetById(request.id);
@@ -111,7 +111,7 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                user.UpdateUser(request.name, request.Email, request.genre, request.Birth, role);
+                user.UpdateEmployee(request.name, request.Email, request.genre, request.Birth, role);
                 
                 userRepositoty.Update(user);
                 return response;
@@ -150,9 +150,9 @@ namespace Domain.Implementations.EntityService.Imp
         }
 
        
-        public static List<UserMessage> MapToMessage(List<User> usuarios)
+        public static List<EmployeeMessage> MapToMessage(List<Employee> usuarios)
         {
-            var lista = new List<UserMessage>();
+            var lista = new List<EmployeeMessage>();
             foreach (var usuario in usuarios)
             {
                 lista.Add(MapToMessage(usuario));
@@ -162,9 +162,9 @@ namespace Domain.Implementations.EntityService.Imp
         }
 
 
-        public static UserMessage MapToMessage(User usuario)
+        public static EmployeeMessage MapToMessage(Employee usuario)
         {
-            return new UserMessage()
+            return new EmployeeMessage()
             {
                 Birth = usuario.Birth,
                 Email = usuario.Email,

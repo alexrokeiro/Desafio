@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Domain.Message.Message
 {
-    public class DeleteUserRequest : BaseRequest
+    public class DeleteEmployeeRequest : BaseRequest
     {
         [DataMember(Name = "id")]
         [Required(ErrorMessage = "Campo id é obrigatório.")]

@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Domain.Message.Message
 {
     [DataContract]
-    public class CreateUserRequest : BaseRequest
+    public class CreateEmployeeRequest : BaseRequest
     {
         [DataMember(Name = "name")]
         [Required(ErrorMessage = "Campo name é obrigatório.")]

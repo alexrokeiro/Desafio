@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Domain.Message.Message
 {
     [DataContract]
-    public class AlterUserRequest : BaseRequest
+    public class AlterEmployeeRequest : BaseRequest
     {
         [DataMember(Name = "id")]
         [Required(ErrorMessage = "Campo id é obrigatório.")]

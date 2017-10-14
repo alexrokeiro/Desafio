@@ -2,7 +2,7 @@
 
 namespace Domain.Message.Message
 {
-    public class DeleteUserResponse : BaseResponse
+    public class AlterEmployeeResponse : BaseResponse
     {
     }
 }

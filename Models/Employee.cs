@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Model.Models
 {
-    public class User
+    public class Employee
     {
 
         public virtual int Id { get; set; }
@@ -20,9 +20,9 @@ namespace Domain.Model.Models
 
         public virtual IList<Dependent> Dependents { get; set; } = new List<Dependent>();
 
-        public static User CreateUser(string name, string email, string genre, DateTime birth, Role role)
+        public static Employee CreateEmployee(string name, string email, string genre, DateTime birth, Role role)
         {
-            return new User()
+            return new Employee()
             {
                 Name = name,
                 Email = email,
@@ -32,7 +32,7 @@ namespace Domain.Model.Models
             };
         }
 
-        public virtual void UpdateUser(string name, string email, string genre, DateTime birth, Role role)
+        public virtual void UpdateEmployee(string name, string email, string genre, DateTime birth, Role role)
         {
             this.Name = name;
             this.Email = email;

@@ -34,7 +34,7 @@ namespace DI
 
             #region EntityService
 
-            container.RegisterType<IUserEntityService, UserEntityService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IEmployeeEntityService, EmployeeEntityService>(new HierarchicalLifetimeManager());
 
             #endregion EntityService
 

@@ -5,36 +5,36 @@ using System.Web.Http;
 
 namespace Desafio.Controllers
 {
-    [RoutePrefix("api/User")]
-    public class UserController : ApiController
+    [RoutePrefix("api/employee")]
+    public class EmployeeController : ApiController
     {
-        private readonly IUserEntityService userEntityService;
+        private readonly IEmployeeEntityService userEntityService;
 
-        public UserController (IUserEntityService userEntityService)
+        public EmployeeController (IEmployeeEntityService userEntityService)
         {
             this.userEntityService = userEntityService;
         }
 
         [HttpPost]
-        public ResultResponse<CreateUserResponse> Create([FromBody]CreateUserRequest request )
+        public ResultResponse<CreateEmployeeResponse> Create([FromBody]CreateEmployeeRequest request )
         {
             return userEntityService.AddUser(request);
         }
 
         [HttpPut]
-        public ResultResponse<AlterUserResponse> Update([FromBody]AlterUserRequest request)
+        public ResultResponse<AlterEmployeeResponse> Update([FromBody]AlterEmployeeRequest request)
         {
             return userEntityService.UpdateUser(request);
         }
 
         [HttpGet]
-        public ResultResponse<ListUserResponse> Get([FromUri]ListUserRequest request)
+        public ResultResponse<ListEmployeeResponse> Get([FromUri]ListEmployeeRequest request)
         {
             return userEntityService.ListUsuario(request);
         }
 
         [HttpDelete]
-        public ResultResponse<DeleteUserResponse> Delete([FromBody]DeleteUserRequest request)
+        public ResultResponse<DeleteEmployeeResponse> Delete([FromBody]DeleteEmployeeRequest request)
         {
             return userEntityService.DeleteUser(request);
         }

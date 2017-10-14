@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Domain.Message.Message
 {
     [DataContract]
-    public class UserMessage
+    public class EmployeeMessage
     {
         [DataMember(Name = "id")]
         public int id { get; set; }
