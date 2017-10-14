@@ -1,4 +1,5 @@
 ﻿using Data.Repository;
+using EntityService.Contract;
 using Infrastructure;
 using Message;
 using Message.Response;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace EntityService
 {
-    public class UserEntityService
+    public class UserEntityService : IUserEntityService
     {
         private UserRepository userRepositoty;
         private RoleRepository roleRepositoty;

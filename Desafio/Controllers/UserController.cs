@@ -1,4 +1,5 @@
 ﻿using EntityService;
+using EntityService.Contract;
 using Infrastructure;
 using Message;
 using Message.Response;
@@ -14,42 +15,42 @@ namespace Desafio.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
-        private UserEntityService entityService;
+        private readonly IUserEntityService userEntityService;
 
-        public UserController ()
+        public UserController (IUserEntityService userEntityService)
         {
-            entityService = new UserEntityService();
+            this.userEntityService = userEntityService;
         }
 
         [HttpPost]
         public ResultResponse<CreateUserResponse> Create([FromBody]CreateUserRequest request )
         {
-            return entityService.AdicionarUsuario(request);
+            return userEntityService.AdicionarUsuario(request);
         }
 
         [HttpPut]
         public ResultResponse<AlterUserResponse> Update([FromBody]AlterUserRequest request)
         {
-            return entityService.AlterarUsuario(request);
+            return userEntityService.AlterarUsuario(request);
         }
 
         [HttpGet]
         public ResultResponse<ListUserResponse> Get([FromUri]ListUserRequest request)
         {
-            return entityService.ListarUsuario(request);
+            return userEntityService.ListarUsuario(request);
         }
 
         [HttpDelete]
         public ResultResponse<DeleteUserResponse> Delete([FromBody]DeleteUserRequest request)
         {
-            return entityService.ExcluirUsuario(request);
+            return userEntityService.ExcluirUsuario(request);
         }
 
         [HttpPost]
         [Route("dependent")]
         public ResultResponse<AddDependentResponse> CreateDepedente([FromBody]AddDependentRequest request)
         {
-            return entityService.AdicionarDependente(request);
+            return userEntityService.AdicionarDependente(request);
         }
     }
 }

@@ -1,0 +1,15 @@
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\EntityService.Contract.dll
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\EntityService.Contract.pdb
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\Infrastructure.dll
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\Message.dll
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\System.Web.Http.dll
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\System.Net.Http.Formatting.dll
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\Newtonsoft.Json.dll
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\Infrastructure.pdb
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\Message.pdb
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\System.Web.Http.xml
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\System.Net.Http.Formatting.xml
+C:\Repos\Desafio\EntityService.Contract\bin\Debug\Newtonsoft.Json.xml
+C:\Repos\Desafio\EntityService.Contract\obj\Debug\EntityService.Contract.csprojResolveAssemblyReference.cache
+C:\Repos\Desafio\EntityService.Contract\obj\Debug\EntityService.Contract.dll
+C:\Repos\Desafio\EntityService.Contract\obj\Debug\EntityService.Contract.pdb

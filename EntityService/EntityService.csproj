@@ -48,6 +48,10 @@
       <Project>{79526588-E169-44D7-B65A-2017BDC39FEC}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntityService.Contract\EntityService.Contract.csproj">
+      <Project>{ADE99E07-2365-4D0E-ACA5-9548A77A396A}</Project>
+      <Name>EntityService.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{DECEC95C-16D2-43D5-A77C-1DD028CB45F3}</Project>
       <Name>Infrastructure</Name>

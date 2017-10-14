@@ -42,3 +42,5 @@ C:\Repos\Desafio\EntityService\bin\Debug\Infrastructure.pdb
 C:\Repos\Desafio\EntityService\bin\Debug\System.Web.Http.xml
 C:\Repos\Desafio\EntityService\bin\Debug\System.Net.Http.Formatting.xml
 C:\Repos\Desafio\EntityService\bin\Debug\Newtonsoft.Json.xml
+C:\Repos\Desafio\EntityService\bin\Debug\EntityService.Contract.dll
+C:\Repos\Desafio\EntityService\bin\Debug\EntityService.Contract.pdb
