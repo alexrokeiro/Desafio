@@ -6,7 +6,7 @@ namespace Domain.Message.Message
     [DataContract]
     public class AddDependentRequest : BaseRequest
     {
-        [DataMember(Name = "idUser")]
+        [DataMember(Name = "idEmployee")]
         public int IdUsuario { get; set; }
 
         [DataMember(Name = "name")]
