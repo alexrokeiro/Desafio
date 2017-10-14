@@ -13,7 +13,7 @@ namespace Data.Repository
     public class UserRepository
     {
 
-        public void Salvar(User usuario)
+        public void Save(User usuario)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -21,7 +21,7 @@ namespace Data.Repository
             }
         }
 
-        public void Atualizar(User usuario)
+        public void Update(User usuario)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -34,7 +34,7 @@ namespace Data.Repository
             }
         }
 
-        public void Deletar(User usuario)
+        public void Delete(User usuario)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -46,7 +46,7 @@ namespace Data.Repository
             }
         }
 
-        public List<User> Listar(string name, bool like)
+        public List<User> List(string name, bool like)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -66,7 +66,7 @@ namespace Data.Repository
             }
         }
 
-        public User ObterPorId(int id)
+        public User GetById(int id)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {

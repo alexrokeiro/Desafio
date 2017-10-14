@@ -67,9 +67,9 @@
       <Project>{ADE99E07-2365-4D0E-ACA5-9548A77A396A}</Project>
       <Name>EntityService.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntityService\EntityService.csproj">
+    <ProjectReference Include="..\EntityService\EntityService.Imp.csproj">
       <Project>{5FA4BE98-9215-4E8C-9316-1CC105CD1019}</Project>
-      <Name>EntityService</Name>
+      <Name>EntityService.Imp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,16 +1,13 @@
 ﻿using Data.Repository;
-using EntityService.Contract;
+using Domain.Contract.EntityService.Contract;
 using Infrastructure;
 using Message;
 using Message.Response;
 using Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EntityService
+namespace Domain.Implementations.EntityService.Imp
 {
     public class UserEntityService : IUserEntityService
     {
@@ -25,12 +22,12 @@ namespace EntityService
             dependentRepository = new DependentRepository();
         }
 
-        public ResultResponse<ListUserResponse> ListarUsuario(ListUserRequest request)
+        public ResultResponse<ListUserResponse> ListUsuario(ListUserRequest request)
         {
             ResultResponse<ListUserResponse> response = new ResultResponse<ListUserResponse>();
             try
             {
-                var usuarios = userRepositoty.Listar(request.name, request.like);
+                var usuarios = userRepositoty.List(request.name, request.like);
                 response.Retorno = new ListUserResponse();
                 response.Retorno.Usuarios = MapToMessage(usuarios);
                 return response;
@@ -44,12 +41,12 @@ namespace EntityService
         }
 
 
-        public ResultResponse<CreateUserResponse> AdicionarUsuario(CreateUserRequest request)
+        public ResultResponse<CreateUserResponse> AddUser(CreateUserRequest request)
         {
             ResultResponse<CreateUserResponse> response = new ResultResponse<CreateUserResponse>(request);
             try
             {
-                var role = roleRepositoty.ObterPorId(request.Role);
+                var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
                     response.CreateResponseBadRequest("Role não existe.");
@@ -57,7 +54,7 @@ namespace EntityService
                 }
 
                 var usuario = new User() { Birth = request.Birth, Email = request.Email, Genre = request.genre, Name = request.name, Role = role };
-                userRepositoty.Salvar(usuario);
+                userRepositoty.Save(usuario);
 
                 return response;
             }
@@ -70,12 +67,12 @@ namespace EntityService
             
         }
 
-        public ResultResponse<DeleteUserResponse> ExcluirUsuario(DeleteUserRequest request)
+        public ResultResponse<DeleteUserResponse> DeleteUser(DeleteUserRequest request)
         {
             ResultResponse<DeleteUserResponse> response = new ResultResponse<DeleteUserResponse>(request);
             try
             {
-                var user = userRepositoty.ObterPorId(request.id);
+                var user = userRepositoty.GetById(request.id);
                 if (user == null)
                 {
                     response.CreateResponseBadRequest("Usuário não encontrado");
@@ -83,8 +80,8 @@ namespace EntityService
                 }
                 user.Dependents.ToList().ForEach(p => dependentRepository.Delete(p));
 
-                var user2 = userRepositoty.ObterPorId(request.id);
-                userRepositoty.Deletar(user2);
+                var user2 = userRepositoty.GetById(request.id);
+                userRepositoty.Delete(user2);
 
                 return response;
             }
@@ -96,12 +93,12 @@ namespace EntityService
             
         }
 
-        public ResultResponse<AlterUserResponse> AlterarUsuario(AlterUserRequest request)
+        public ResultResponse<AlterUserResponse> AlterUser(AlterUserRequest request)
         {
             ResultResponse<AlterUserResponse> response = new ResultResponse<AlterUserResponse>(request);
             try
             {
-                var user = userRepositoty.ObterPorId(request.id);
+                var user = userRepositoty.GetById(request.id);
                 if (user == null)
                 {
                     response.CreateResponseBadRequest("Usuário não encontrado para o id informado.");
@@ -113,7 +110,7 @@ namespace EntityService
                 user.Genre = request.genre;
                 user.Name = request.name;
 
-                userRepositoty.Atualizar(user);
+                userRepositoty.Update(user);
                 return response;
             }
             catch (System.Exception)
@@ -124,12 +121,12 @@ namespace EntityService
             
         }
 
-        public ResultResponse<AddDependentResponse> AdicionarDependente(AddDependentRequest request)
+        public ResultResponse<AddDependentResponse> AddDependent(AddDependentRequest request)
         {
             ResultResponse<AddDependentResponse> response = new ResultResponse<AddDependentResponse>(request);
             try
             {
-                var user = userRepositoty.ObterPorId(request.IdUsuario);
+                var user = userRepositoty.GetById(request.IdUsuario);
                 if (user == null)
                 {
                     response.CreateResponseBadRequest("Usuário não encontrado para o id informado.");

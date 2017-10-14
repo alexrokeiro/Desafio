@@ -11,7 +11,7 @@ namespace Data.Repository
 {
     public class RoleRepository
     {
-        public Role ObterPorId(int id)
+        public Role GetById(int id)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {

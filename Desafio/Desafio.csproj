@@ -352,9 +352,9 @@
       <Project>{ADE99E07-2365-4D0E-ACA5-9548A77A396A}</Project>
       <Name>EntityService.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntityService\EntityService.csproj">
+    <ProjectReference Include="..\EntityService\EntityService.Imp.csproj">
       <Project>{5FA4BE98-9215-4E8C-9316-1CC105CD1019}</Project>
-      <Name>EntityService</Name>
+      <Name>EntityService.Imp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{decec95c-16d2-43d5-a77c-1dd028cb45f3}</Project>

@@ -1,11 +1,7 @@
-﻿using EntityService;
-using EntityService.Contract;
+﻿using Domain.Contract.EntityService.Contract;
+using Domain.Implementations.EntityService.Imp;
 using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DI
 {

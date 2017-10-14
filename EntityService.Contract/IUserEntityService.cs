@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityService.Contract
+namespace Domain.Contract.EntityService.Contract
 {
     public interface IUserEntityService
     {
 
-        ResultResponse<ListUserResponse> ListarUsuario(ListUserRequest request);
+        ResultResponse<ListUserResponse> ListUsuario(ListUserRequest request);
 
-        ResultResponse<CreateUserResponse> AdicionarUsuario(CreateUserRequest request);
+        ResultResponse<CreateUserResponse> AddUser(CreateUserRequest request);
 
-        ResultResponse<DeleteUserResponse> ExcluirUsuario(DeleteUserRequest request);
+        ResultResponse<DeleteUserResponse> DeleteUser(DeleteUserRequest request);
 
-        ResultResponse<AlterUserResponse> AlterarUsuario(AlterUserRequest request);
+        ResultResponse<AlterUserResponse> AlterUser(AlterUserRequest request);
 
-        ResultResponse<AddDependentResponse> AdicionarDependente(AddDependentRequest request);
+        ResultResponse<AddDependentResponse> AddDependent(AddDependentRequest request);
 
     }
 
