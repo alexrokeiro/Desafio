@@ -71,6 +71,9 @@ namespace Data.Repository
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 var user = session.Get<User>(id);
+                if (user == null)
+                    return user;
+
                 NHibernateUtil.Initialize(user.Role);
                 NHibernateUtil.Initialize(user.Dependents);
                 return user;

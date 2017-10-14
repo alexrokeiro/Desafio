@@ -11,11 +11,27 @@ namespace Data.Repository
 {
     public class DependentRepository
     {
-        public void Salvar(Dependent dependent)
+        public void Save(Dependent dependent)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                session.Save(dependent);
+                using (var tran = session.BeginTransaction())
+                {
+                    session.Save(dependent);
+                    tran.Commit();
+                }
+            }
+        }
+
+        public void Delete(Dependent dependent)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (var tran = session.BeginTransaction())
+                {
+                    session.Delete(dependent);
+                    tran.Commit();
+                }
             }
         }
     }

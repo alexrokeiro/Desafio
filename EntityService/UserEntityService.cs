@@ -34,7 +34,7 @@ namespace EntityService
                 response.Retorno.Usuarios = MapToMessage(usuarios);
                 return response;
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 response.CreateResponseInternalServerError("Não foi possivel listar os usuários");
                 return response;
@@ -60,7 +60,7 @@ namespace EntityService
 
                 return response;
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
                 return response;
@@ -74,18 +74,20 @@ namespace EntityService
             ResultResponse<DeleteUserResponse> response = new ResultResponse<DeleteUserResponse>(request);
             try
             {
-                var usuario = userRepositoty.ObterPorId(request.id);
-                if (usuario == null)
+                var user = userRepositoty.ObterPorId(request.id);
+                if (user == null)
                 {
                     response.CreateResponseBadRequest("Usuário não encontrado");
                     return response;
                 }
+                user.Dependents.ToList().ForEach(p => dependentRepository.Delete(p));
 
-                userRepositoty.Deletar(usuario);
+                var user2 = userRepositoty.ObterPorId(request.id);
+                userRepositoty.Deletar(user2);
 
                 return response;
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
                 response.CreateResponseInternalServerError("Não foi possível excluir o usuário");
                 return response;
@@ -113,7 +115,7 @@ namespace EntityService
                 userRepositoty.Atualizar(user);
                 return response;
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 response.CreateResponseInternalServerError("Não foi possível alterar o usuário");
                 return response;
@@ -134,11 +136,11 @@ namespace EntityService
                 }
 
                 var dependet = new Dependent() { Name = request.Name, IdUser = user.Id };
-                dependentRepository.Salvar(dependet);
+                dependentRepository.Save(dependet);
 
                 return response;
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 response.CreateResponseInternalServerError("Não foi possível adicionar o dependente.");
                 return response;
