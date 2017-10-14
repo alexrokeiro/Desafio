@@ -62,12 +62,15 @@ namespace Data.Repository
             }
         }
 
-        public User GetById(int id)
+        public User GetById(int id, bool loadRelationships = false)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 var user = session.Get<User>(id);
                 if (user == null)
+                    return user;
+
+                if (!loadRelationships)
                     return user;
 
                 NHibernateUtil.Initialize(user.Role);
@@ -76,6 +79,5 @@ namespace Data.Repository
             }
 
         }
-
     }
 }

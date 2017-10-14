@@ -10,7 +10,7 @@ namespace Domain.Message.Message
     {
         [DataMember(Name = "name")]
         [Required(ErrorMessage = "Campo name é obrigatório.")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [DataMember(Name = "email")]
         [Required(ErrorMessage = "Campo email é obrigatório.")]
@@ -18,7 +18,7 @@ namespace Domain.Message.Message
 
         [DataMember(Name = "genre")]
         [Required(ErrorMessage = "Campo genre é obrigatório.")]
-        public string genre { get; set; }
+        public string Genre { get; set; }
 
         [DataMember(Name = "birth")]
         [Required(ErrorMessage = "Campo birth é obrigatório.")]

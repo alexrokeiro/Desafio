@@ -7,3 +7,4 @@ C:\Repos\Desafio\Models\bin\Debug\Models.dll
 C:\Repos\Desafio\Models\bin\Debug\Models.pdb
 C:\Repos\Desafio\Models\obj\Debug\Models.dll
 C:\Repos\Desafio\Models\obj\Debug\Models.pdb
+C:\Repos\Desafio\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

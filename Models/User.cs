@@ -19,5 +19,25 @@ namespace Domain.Model.Models
         public virtual Role Role { get; set; }
 
         public virtual IList<Dependent> Dependents { get; set; } = new List<Dependent>();
+
+        public static User CreateUser(string name, string email, string genre, DateTime birth, Role role)
+        {
+            return new User()
+            {
+                Name = name,
+                Email = email,
+                Genre = genre,
+                Birth = birth,
+                Role = role
+            };
+        }
+
+        public virtual void UpdateUser(string name, string email, string genre, DateTime birth)
+        {
+            this.Name = name;
+            this.Email = email;
+            this.Genre = genre;
+            this.Birth = birth;
+        }
     }
 }

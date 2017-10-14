@@ -43,8 +43,8 @@ namespace Domain.Implementations.EntityService.Imp
         public ResultResponse<CreateUserResponse> AddUser(CreateUserRequest request)
         {
             ResultResponse<CreateUserResponse> response = new ResultResponse<CreateUserResponse>(request);
-            try
-            {
+            //try
+            //{
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
@@ -52,16 +52,16 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                var usuario = new User() { Birth = request.Birth, Email = request.Email, Genre = request.genre, Name = request.name, Role = role };
+                var usuario = User.CreateUser(request.Name, request.Email, request.Genre, request.Birth, role);
                 userRepositoty.Save(usuario);
 
                 return response;
-            }
-            catch (System.Exception)
-            {
-                response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
-                return response;
-            }
+            //}
+            //catch (System.Exception)
+            //{
+            //    response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
+            //    return response;
+            //}
             
             
         }
@@ -71,7 +71,7 @@ namespace Domain.Implementations.EntityService.Imp
             ResultResponse<DeleteUserResponse> response = new ResultResponse<DeleteUserResponse>(request);
             try
             {
-                var user = userRepositoty.GetById(request.id);
+                var user = userRepositoty.GetById(request.id,true);
                 if (user == null)
                 {
                     response.CreateResponseBadRequest("Usuário não encontrado");
@@ -104,11 +104,8 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                user.Birth = request.Birth;
-                user.Email = request.Email;
-                user.Genre = request.genre;
-                user.Name = request.name;
-
+                user.UpdateUser(request.name, request.Email, request.genre, request.Birth);
+                
                 userRepositoty.Update(user);
                 return response;
             }
