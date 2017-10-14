@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace Message.Response
 {
     [DataContract]
-    public class ListarUsuarioResponse : BaseResponse
+    public class ListUserResponse : BaseResponse
     {
         [DataMember(Name = "id")]
-        public List<UsuarioMessage> Usuarios { get; set; }
+        public List<UserMessage> Usuarios { get; set; }
 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Message
 {
-    public class AdicionarDependenteResponse : BaseResponse
+    public class CreateUserResponse : BaseResponse
     {
     }
 }

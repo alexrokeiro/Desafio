@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Message
 {
     [DataContract]
-    public class CriarUsuarioRequest : BaseRequest
+    public class CreateUserRequest : BaseRequest
     {
         [DataMember(Name = "name")]
         [Required(ErrorMessage = "Campo name é obrigatório.")]

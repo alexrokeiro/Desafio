@@ -11,26 +11,26 @@ using System.Threading.Tasks;
 
 namespace EntityService
 {
-    public class UsuarioEntityService
+    public class UserEntityService
     {
         private UserRepository usuarioRepositoty;
         private RoleRepository roleRepositoty;
         private DependentRepository dependentRepository;
 
-        public ResultResponse<ListarUsuarioResponse> ListarUsuario(ListarUsuariosRequest request)
+        public ResultResponse<ListUserResponse> ListarUsuario(ListUserRequest request)
         {
-            ResultResponse<ListarUsuarioResponse> result = new ResultResponse<ListarUsuarioResponse>();
+            ResultResponse<ListUserResponse> result = new ResultResponse<ListUserResponse>();
             usuarioRepositoty = new UserRepository();
             var usuarios = usuarioRepositoty.Listar(request.name, request.like);
-            result.Retorno = new ListarUsuarioResponse();
+            result.Retorno = new ListUserResponse();
             result.Retorno.Usuarios = MapToMessage(usuarios);
             return result;
         }
 
 
-        public ResultResponse<CriarUsuarioResponse> AdicionarUsuario(CriarUsuarioRequest request)
+        public ResultResponse<CreateUserResponse> AdicionarUsuario(CreateUserRequest request)
         {
-            ResultResponse<CriarUsuarioResponse> response = new ResultResponse<CriarUsuarioResponse>(request);
+            ResultResponse<CreateUserResponse> response = new ResultResponse<CreateUserResponse>(request);
             usuarioRepositoty = new UserRepository();
             roleRepositoty = new RoleRepository();
             var role = roleRepositoty.ObterPorId(request.Role);
@@ -40,9 +40,9 @@ namespace EntityService
             return response;
         }
 
-        public ResultResponse<DeletarUsuarioResponse> ExcluirUsuario(DeletarUsuarioRequest request)
+        public ResultResponse<DeleteUserResponse> ExcluirUsuario(DeleteUserRequest request)
         {
-            ResultResponse<DeletarUsuarioResponse> result = new ResultResponse<DeletarUsuarioResponse>(request);
+            ResultResponse<DeleteUserResponse> result = new ResultResponse<DeleteUserResponse>(request);
             usuarioRepositoty = new UserRepository();
             var usuario = usuarioRepositoty.ObterPorId(request.id);
             if (usuario == null)
@@ -56,18 +56,23 @@ namespace EntityService
             return result;
         }
 
-        public ResultResponse<AlterarUsuarioResponse> AlterarUsuario(AlterarUsuarioRequest request)
+        public ResultResponse<AlterUserResponse> AlterarUsuario(AlterUserRequest request)
         {
-            ResultResponse<AlterarUsuarioResponse> result = new ResultResponse<AlterarUsuarioResponse>(request);
-            var usuario = new User() {Id = request.id, Birth = request.Birth, Email = request.Email, Genre = request.genre, Name = request.name };
+            ResultResponse<AlterUserResponse> result = new ResultResponse<AlterUserResponse>(request);
             usuarioRepositoty = new UserRepository();
-            usuarioRepositoty.Atualizar(usuario);
+            var user = usuarioRepositoty.ObterPorId(request.id);
+            user.Birth = request.Birth;
+            user.Email = request.Email;
+            user.Genre = request.genre;
+            user.Name = request.name;
+            
+            usuarioRepositoty.Atualizar(user);
             return result;
         }
 
-        public ResultResponse<AdicionarDependenteResponse> AdicionarDependente(AdicionarDependeteRequest request)
+        public ResultResponse<AddDependentResponse> AdicionarDependente(AddDependentRequest request)
         {
-            ResultResponse<AdicionarDependenteResponse> result = new ResultResponse<AdicionarDependenteResponse>(request);
+            ResultResponse<AddDependentResponse> result = new ResultResponse<AddDependentResponse>(request);
             usuarioRepositoty = new UserRepository();
             dependentRepository = new DependentRepository();
             var user = usuarioRepositoty.ObterPorId(request.IdUsuario);
@@ -77,20 +82,20 @@ namespace EntityService
             return result;
         }
 
-        private List<UsuarioMessage> Create()
+        private List<UserMessage> Create()
         {
-            var list = new List<UsuarioMessage>();
+            var list = new List<UserMessage>();
             for (int i = 0; i < 9; i++)
             {
-                list.Add(new UsuarioMessage() { id = 1, Birth = DateTime.Now, Email = "sdsadsa", genre = "masc", name = string.Concat("teste",i), Role = "role", QuantidadeDependentes = i });
+                list.Add(new UserMessage() { id = 1, Birth = DateTime.Now, Email = "sdsadsa", genre = "masc", name = string.Concat("teste",i), Role = "role", QuantidadeDependentes = i });
             }
             return list;
 
         }
 
-        public static List<UsuarioMessage> MapToMessage(List<User> usuarios)
+        public static List<UserMessage> MapToMessage(List<User> usuarios)
         {
-            var lista = new List<UsuarioMessage>();
+            var lista = new List<UserMessage>();
             foreach (var usuario in usuarios)
             {
                 lista.Add(MapToMessage(usuario));
@@ -100,9 +105,9 @@ namespace EntityService
         }
 
 
-        public static UsuarioMessage MapToMessage(User usuario)
+        public static UserMessage MapToMessage(User usuario)
         {
-            return new UsuarioMessage()
+            return new UserMessage()
             {
                 Birth = usuario.Birth,
                 Email = usuario.Email,

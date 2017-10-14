@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Message
 {
-    public class DeletarUsuarioResponse : BaseResponse
+    public class AlterUserResponse : BaseResponse
     {
     }
 }

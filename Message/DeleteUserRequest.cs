@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Message
 {
-    public class DeletarUsuarioRequest : BaseRequest
+    public class DeleteUserRequest : BaseRequest
     {
         [DataMember(Name = "id")]
         [Required(ErrorMessage = "Campo id é obrigatório.")]

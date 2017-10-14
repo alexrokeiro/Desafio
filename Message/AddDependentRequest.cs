@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Message
 {
     [DataContract]
-    public class AdicionarDependeteRequest : BaseRequest
+    public class AddDependentRequest : BaseRequest
     {
         [DataMember(Name = "idUsuario")]
         public int IdUsuario { get; set; }
