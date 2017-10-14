@@ -60,6 +60,8 @@
     <Compile Include="AlterEmployeeResponse.cs" />
     <Compile Include="CreateEmployeeRequest.cs" />
     <Compile Include="CreateEmployeeResponse.cs" />
+    <Compile Include="DeleteDependentRequest.cs" />
+    <Compile Include="DeleteDependentResponse.cs" />
     <Compile Include="DeleteEmployeeRequest.cs" />
     <Compile Include="DeleteEmployeeResponse.cs" />
     <Compile Include="ListEmployeeRequest.cs" />

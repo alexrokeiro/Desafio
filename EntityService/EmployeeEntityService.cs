@@ -5,6 +5,7 @@ using Domain.Model.Models;
 using Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Domain.Implementations.EntityService.Imp
 {
@@ -54,7 +55,7 @@ namespace Domain.Implementations.EntityService.Imp
 
                 var usuario = Employee.CreateEmployee(request.Name, request.Email, request.Genre, request.Birth, role);
                 userRepositoty.Save(usuario);
-
+                
                 return response;
             }
             catch (System.Exception)
@@ -149,7 +150,30 @@ namespace Domain.Implementations.EntityService.Imp
             
         }
 
-       
+        public ResultResponse<DeleteEmployeeResponse> DeleteDependent(DeleteEmployeeRequest request)
+        {
+            ResultResponse<DeleteEmployeeResponse> response = new ResultResponse<DeleteEmployeeResponse>(request);
+            try
+            {
+                var dependent = dependentRepository.GetById(request.id);
+                if (dependent == null)
+                {
+                    response.CreateResponseBadRequest("Dependente não encontrado.");
+                    return response;
+                }
+
+                dependentRepository.Delete(dependent);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possível excluir o dependente.");
+                return response;
+            }
+        }
+
+
         public static List<EmployeeMessage> MapToMessage(List<Employee> usuarios)
         {
             var lista = new List<EmployeeMessage>();
@@ -175,5 +199,6 @@ namespace Domain.Implementations.EntityService.Imp
                 Role = usuario.Role.Name
             };
         }
+
     }
 }

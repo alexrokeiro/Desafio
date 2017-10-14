@@ -29,5 +29,13 @@ namespace Data.Repository
                 }
             }
         }
+
+        public Dependent GetById(int id)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                return session.Get<Dependent>(id);
+            }
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace Domain.Contract.EntityService.Contract
 
         ResultResponse<AddDependentResponse> AddDependent(AddDependentRequest request);
 
+        ResultResponse<DeleteEmployeeResponse> DeleteDependent(DeleteEmployeeRequest request);
+
     }
 
 

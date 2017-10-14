@@ -45,5 +45,12 @@ namespace Desafio.Controllers
         {
             return userEntityService.AddDependent(request);
         }
+
+        [HttpDelete]
+        [Route("dependent")]
+        public ResultResponse<DeleteEmployeeResponse> DeleteDepedente([FromBody]DeleteEmployeeRequest request)
+        {
+            return userEntityService.DeleteDependent(request);
+        }
     }
 }
