@@ -11,37 +11,37 @@ namespace Domain.Implementations.EntityService.Imp
 {
     public class EmployeeEntityService : IEmployeeEntityService
     {
-        private EmployeeRepository userRepositoty;
+        private EmployeeRepository EmployeeRepositoty;
         private RoleRepository roleRepositoty;
         private DependentRepository dependentRepository;
 
         public EmployeeEntityService()
         {
-            userRepositoty = new EmployeeRepository();
+            EmployeeRepositoty = new EmployeeRepository();
             roleRepositoty = new RoleRepository();
             dependentRepository = new DependentRepository();
         }
 
-        public ResultResponse<ListEmployeeResponse> ListUsuario(ListEmployeeRequest request)
+        public ResultResponse<ListEmployeeResponse> ListEmployee(ListEmployeeRequest request)
         {
             ResultResponse<ListEmployeeResponse> response = new ResultResponse<ListEmployeeResponse>(request);
             try
             {
-                var usuarios = userRepositoty.List(request.name, request.like);
+                var employees = EmployeeRepositoty.List(request.name, request.like);
                 response.Retorno = new ListEmployeeResponse();
-                response.Retorno.Usuarios = MapToMessage(usuarios);
+                response.Retorno.Employees = MapToMessage(employees);
                 return response;
             }
             catch (System.Exception)
             {
-                response.CreateResponseInternalServerError("Não foi possivel listar os usuários");
+                response.CreateResponseInternalServerError("Não foi possivel listar os empregados");
                 return response;
             }
             
         }
 
 
-        public ResultResponse<CreateEmployeeResponse> AddUser(CreateEmployeeRequest request)
+        public ResultResponse<CreateEmployeeResponse> AddEmployee(CreateEmployeeRequest request)
         {
             ResultResponse<CreateEmployeeResponse> response = new ResultResponse<CreateEmployeeResponse>(request);
             try
@@ -49,77 +49,77 @@ namespace Domain.Implementations.EntityService.Imp
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
-                    response.CreateResponseBadRequest("Role não existe.");
+                    response.CreateResponseBadRequest("Cargo não existe.");
                     return response;
                 }
 
-                var usuario = Employee.CreateEmployee(request.Name, request.Email, request.Genre, request.Birth, role);
-                userRepositoty.Save(usuario);
+                var employee = Employee.CreateEmployee(request.Name, request.Email, request.Genre, request.Birth, role);
+                EmployeeRepositoty.Save(employee);
                 
                 return response;
             }
             catch (System.Exception)
             {
-                response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
+                response.CreateResponseInternalServerError("Não foi possivel adicionar o empregado.");
                 return response;
             }
 
 
         }
 
-        public ResultResponse<DeleteEmployeeResponse> DeleteUser(DeleteEmployeeRequest request)
+        public ResultResponse<DeleteEmployeeResponse> DeleteEmployee(DeleteEmployeeRequest request)
         {
             ResultResponse<DeleteEmployeeResponse> response = new ResultResponse<DeleteEmployeeResponse>(request);
             try
             {
-                var user = userRepositoty.GetById(request.id,true);
-                if (user == null)
+                var employee = EmployeeRepositoty.GetById(request.id,true);
+                if (employee == null)
                 {
-                    response.CreateResponseBadRequest("Usuário não encontrado");
+                    response.CreateResponseBadRequest("Empregado não encontrado");
                     return response;
                 }
-                user.Dependents.ToList().ForEach(p => dependentRepository.Delete(p));
+                employee.Dependents.ToList().ForEach(p => dependentRepository.Delete(p));
 
-                var user2 = userRepositoty.GetById(request.id);
-                userRepositoty.Delete(user2);
+                var employee2 = EmployeeRepositoty.GetById(request.id);
+                EmployeeRepositoty.Delete(employee2);
 
                 return response;
             }
             catch (System.Exception ex)
             {
-                response.CreateResponseInternalServerError("Não foi possível excluir o usuário");
+                response.CreateResponseInternalServerError("Não foi possível excluir o empregado");
                 return response;
             }
             
         }
 
-        public ResultResponse<AlterEmployeeResponse> UpdateUser(AlterEmployeeRequest request)
+        public ResultResponse<AlterEmployeeResponse> UpdateEmployee(AlterEmployeeRequest request)
         {
             ResultResponse<AlterEmployeeResponse> response = new ResultResponse<AlterEmployeeResponse>(request);
             try
             {
-                var user = userRepositoty.GetById(request.id);
-                if (user == null)
+                var employee = EmployeeRepositoty.GetById(request.id);
+                if (employee == null)
                 {
-                    response.CreateResponseBadRequest("Usuário não encontrado para o id informado.");
+                    response.CreateResponseBadRequest("Empregado não encontrado para o id informado.");
                     return response;
                 }
 
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
-                    response.CreateResponseBadRequest("Role não encontrada");
+                    response.CreateResponseBadRequest("Cargo não encontrada");
                     return response;
                 }
 
-                user.UpdateEmployee(request.name, request.Email, request.genre, request.Birth, role);
+                employee.UpdateEmployee(request.name, request.Email, request.genre, request.Birth, role);
                 
-                userRepositoty.Update(user);
+                EmployeeRepositoty.Update(employee);
                 return response;
             }
             catch (System.Exception)
             {
-                response.CreateResponseInternalServerError("Não foi possível alterar o usuário");
+                response.CreateResponseInternalServerError("Não foi possível alterar o empregado.");
                 return response;
             }
             
@@ -130,14 +130,14 @@ namespace Domain.Implementations.EntityService.Imp
             ResultResponse<AddDependentResponse> response = new ResultResponse<AddDependentResponse>(request);
             try
             {
-                var user = userRepositoty.GetById(request.IdUsuario);
-                if (user == null)
+                var employee = EmployeeRepositoty.GetById(request.IdUsuario);
+                if (employee == null)
                 {
-                    response.CreateResponseBadRequest("Usuário não encontrado para o id informado.");
+                    response.CreateResponseBadRequest("Empregado não encontrado para o id informado.");
                     return response;
                 }
 
-                var dependet = new Dependent() { Name = request.Name, IdUser = user.Id };
+                var dependet = new Dependent() { Name = request.Name, IdUser = employee.Id };
                 dependentRepository.Save(dependet);
 
                 return response;
@@ -174,29 +174,29 @@ namespace Domain.Implementations.EntityService.Imp
         }
 
 
-        public static List<EmployeeMessage> MapToMessage(List<Employee> usuarios)
+        public static List<EmployeeMessage> MapToMessage(List<Employee> employees)
         {
             var lista = new List<EmployeeMessage>();
-            foreach (var usuario in usuarios)
+            foreach (var employee in employees)
             {
-                lista.Add(MapToMessage(usuario));
+                lista.Add(MapToMessage(employee));
             }
 
             return lista;
         }
 
 
-        public static EmployeeMessage MapToMessage(Employee usuario)
+        public static EmployeeMessage MapToMessage(Employee employee)
         {
             return new EmployeeMessage()
             {
-                Birth = usuario.Birth,
-                Email = usuario.Email,
-                genre = usuario.Genre,
-                name = usuario.Name,
-                id = usuario.Id,
-                QuantidadeDependentes = usuario.Dependents.Count(),
-                Role = usuario.Role.Name
+                Birth = employee.Birth,
+                Email = employee.Email,
+                genre = employee.Genre,
+                name = employee.Name,
+                id = employee.Id,
+                QuantidadeDependentes = employee.Dependents.Count(),
+                Role = employee.Role.Name
             };
         }
 

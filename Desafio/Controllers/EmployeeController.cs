@@ -18,25 +18,25 @@ namespace Desafio.Controllers
         [HttpPost]
         public ResultResponse<CreateEmployeeResponse> Create([FromBody]CreateEmployeeRequest request )
         {
-            return userEntityService.AddUser(request);
+            return userEntityService.AddEmployee(request);
         }
 
         [HttpPut]
         public ResultResponse<AlterEmployeeResponse> Update([FromBody]AlterEmployeeRequest request)
         {
-            return userEntityService.UpdateUser(request);
+            return userEntityService.UpdateEmployee(request);
         }
 
         [HttpGet]
         public ResultResponse<ListEmployeeResponse> Get([FromUri]ListEmployeeRequest request)
         {
-            return userEntityService.ListUsuario(request);
+            return userEntityService.ListEmployee(request);
         }
 
         [HttpDelete]
         public ResultResponse<DeleteEmployeeResponse> Delete([FromBody]DeleteEmployeeRequest request)
         {
-            return userEntityService.DeleteUser(request);
+            return userEntityService.DeleteEmployee(request);
         }
 
         [HttpPost]

@@ -7,8 +7,8 @@ namespace Domain.Message.Message
     [DataContract]
     public class ListEmployeeResponse : BaseResponse
     {
-        [DataMember(Name = "id")]
-        public List<EmployeeMessage> Usuarios { get; set; }
+        [DataMember(Name = "employees")]
+        public List<EmployeeMessage> Employees { get; set; }
 
     }
 }

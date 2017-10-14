@@ -6,13 +6,13 @@ namespace Domain.Contract.EntityService.Contract
     public interface IEmployeeEntityService
     {
 
-        ResultResponse<ListEmployeeResponse> ListUsuario(ListEmployeeRequest request);
+        ResultResponse<ListEmployeeResponse> ListEmployee(ListEmployeeRequest request);
 
-        ResultResponse<CreateEmployeeResponse> AddUser(CreateEmployeeRequest request);
+        ResultResponse<CreateEmployeeResponse> AddEmployee(CreateEmployeeRequest request);
 
-        ResultResponse<DeleteEmployeeResponse> DeleteUser(DeleteEmployeeRequest request);
+        ResultResponse<DeleteEmployeeResponse> DeleteEmployee(DeleteEmployeeRequest request);
 
-        ResultResponse<AlterEmployeeResponse> UpdateUser(AlterEmployeeRequest request);
+        ResultResponse<AlterEmployeeResponse> UpdateEmployee(AlterEmployeeRequest request);
 
         ResultResponse<AddDependentResponse> AddDependent(AddDependentRequest request);
 
