@@ -1,9 +1,8 @@
 ﻿using Data.Repository;
 using Domain.Contract.EntityService.Contract;
+using Domain.Message.Message;
+using Domain.Model.Models;
 using Infrastructure;
-using Message;
-using Message.Response;
-using Models;
 using System.Collections.Generic;
 using System.Linq;
 

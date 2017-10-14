@@ -1,11 +1,6 @@
 ﻿using Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Message
+namespace Domain.Message.Message
 {
     public class CreateUserResponse : BaseResponse
     {

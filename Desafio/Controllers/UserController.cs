@@ -1,7 +1,6 @@
 ﻿using Domain.Contract.EntityService.Contract;
+using Domain.Message.Message;
 using Infrastructure;
-using Message;
-using Message.Response;
 using System.Web.Http;
 
 namespace Desafio.Controllers

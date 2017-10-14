@@ -1,10 +1,5 @@
-﻿using FluentNHibernate.Mapping;
-using Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Model.Models;
+using FluentNHibernate.Mapping;
 
 namespace Data.Mapping
 {

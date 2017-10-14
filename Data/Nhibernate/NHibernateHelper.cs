@@ -1,14 +1,9 @@
 ﻿using Data.Mapping;
+using Domain.Model.Models;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Models;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Nhibernate
 {

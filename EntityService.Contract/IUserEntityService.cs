@@ -1,11 +1,5 @@
-﻿using Infrastructure;
-using Message;
-using Message.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Message.Message;
+using Infrastructure;
 
 namespace Domain.Contract.EntityService.Contract
 {

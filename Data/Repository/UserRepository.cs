@@ -1,12 +1,9 @@
 ﻿using Data.Nhibernate;
-using Models;
+using Domain.Model.Models;
 using NHibernate;
 using NHibernate.Criterion;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repository
 {
