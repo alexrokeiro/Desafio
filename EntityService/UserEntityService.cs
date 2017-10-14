@@ -13,86 +13,140 @@ namespace EntityService
 {
     public class UserEntityService
     {
-        private UserRepository usuarioRepositoty;
+        private UserRepository userRepositoty;
         private RoleRepository roleRepositoty;
         private DependentRepository dependentRepository;
 
+        public UserEntityService()
+        {
+            userRepositoty = new UserRepository();
+            roleRepositoty = new RoleRepository();
+            dependentRepository = new DependentRepository();
+        }
+
         public ResultResponse<ListUserResponse> ListarUsuario(ListUserRequest request)
         {
-            ResultResponse<ListUserResponse> result = new ResultResponse<ListUserResponse>();
-            usuarioRepositoty = new UserRepository();
-            var usuarios = usuarioRepositoty.Listar(request.name, request.like);
-            result.Retorno = new ListUserResponse();
-            result.Retorno.Usuarios = MapToMessage(usuarios);
-            return result;
+            ResultResponse<ListUserResponse> response = new ResultResponse<ListUserResponse>();
+            try
+            {
+                var usuarios = userRepositoty.Listar(request.name, request.like);
+                response.Retorno = new ListUserResponse();
+                response.Retorno.Usuarios = MapToMessage(usuarios);
+                return response;
+            }
+            catch (Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possivel listar os usuários");
+                return response;
+            }
+            
         }
 
 
         public ResultResponse<CreateUserResponse> AdicionarUsuario(CreateUserRequest request)
         {
             ResultResponse<CreateUserResponse> response = new ResultResponse<CreateUserResponse>(request);
-            usuarioRepositoty = new UserRepository();
-            roleRepositoty = new RoleRepository();
-            var role = roleRepositoty.ObterPorId(request.Role);
-            var usuario = new User() { Birth = request.Birth, Email = request.Email, Genre = request.genre, Name = request.name, Role = role};
-            usuarioRepositoty.Salvar(usuario);
+            try
+            {
+                var role = roleRepositoty.ObterPorId(request.Role);
+                if (role == null)
+                {
+                    response.CreateResponseBadRequest("Role não existe.");
+                    return response;
+                }
 
-            return response;
+                var usuario = new User() { Birth = request.Birth, Email = request.Email, Genre = request.genre, Name = request.name, Role = role };
+                userRepositoty.Salvar(usuario);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possivel adicionar o usuário.");
+                return response;
+            }
+            
+            
         }
 
         public ResultResponse<DeleteUserResponse> ExcluirUsuario(DeleteUserRequest request)
         {
-            ResultResponse<DeleteUserResponse> result = new ResultResponse<DeleteUserResponse>(request);
-            usuarioRepositoty = new UserRepository();
-            var usuario = usuarioRepositoty.ObterPorId(request.id);
-            if (usuario == null)
+            ResultResponse<DeleteUserResponse> response = new ResultResponse<DeleteUserResponse>(request);
+            try
             {
-                result.CreateResponseBadRequest("Usuário não encontrado");
-                return result;
+                var usuario = userRepositoty.ObterPorId(request.id);
+                if (usuario == null)
+                {
+                    response.CreateResponseBadRequest("Usuário não encontrado");
+                    return response;
+                }
+
+                userRepositoty.Deletar(usuario);
+
+                return response;
             }
-
-            usuarioRepositoty.Deletar(usuario);
-
-            return result;
+            catch (Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possível excluir o usuário");
+                return response;
+            }
+            
         }
 
         public ResultResponse<AlterUserResponse> AlterarUsuario(AlterUserRequest request)
         {
-            ResultResponse<AlterUserResponse> result = new ResultResponse<AlterUserResponse>(request);
-            usuarioRepositoty = new UserRepository();
-            var user = usuarioRepositoty.ObterPorId(request.id);
-            user.Birth = request.Birth;
-            user.Email = request.Email;
-            user.Genre = request.genre;
-            user.Name = request.name;
+            ResultResponse<AlterUserResponse> response = new ResultResponse<AlterUserResponse>(request);
+            try
+            {
+                var user = userRepositoty.ObterPorId(request.id);
+                if (user == null)
+                {
+                    response.CreateResponseBadRequest("Usuário não encontrado para o id informado.");
+                    return response;
+                }
+
+                user.Birth = request.Birth;
+                user.Email = request.Email;
+                user.Genre = request.genre;
+                user.Name = request.name;
+
+                userRepositoty.Atualizar(user);
+                return response;
+            }
+            catch (Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possível alterar o usuário");
+                return response;
+            }
             
-            usuarioRepositoty.Atualizar(user);
-            return result;
         }
 
         public ResultResponse<AddDependentResponse> AdicionarDependente(AddDependentRequest request)
         {
-            ResultResponse<AddDependentResponse> result = new ResultResponse<AddDependentResponse>(request);
-            usuarioRepositoty = new UserRepository();
-            dependentRepository = new DependentRepository();
-            var user = usuarioRepositoty.ObterPorId(request.IdUsuario);
-            var dependet = new Dependent() { Name = request.Name, IdUser = user.Id };
-            dependentRepository.Salvar(dependet);
-
-            return result;
-        }
-
-        private List<UserMessage> Create()
-        {
-            var list = new List<UserMessage>();
-            for (int i = 0; i < 9; i++)
+            ResultResponse<AddDependentResponse> response = new ResultResponse<AddDependentResponse>(request);
+            try
             {
-                list.Add(new UserMessage() { id = 1, Birth = DateTime.Now, Email = "sdsadsa", genre = "masc", name = string.Concat("teste",i), Role = "role", QuantidadeDependentes = i });
-            }
-            return list;
+                var user = userRepositoty.ObterPorId(request.IdUsuario);
+                if (user == null)
+                {
+                    response.CreateResponseBadRequest("Usuário não encontrado para o id informado.");
+                    return response;
+                }
 
+                var dependet = new Dependent() { Name = request.Name, IdUser = user.Id };
+                dependentRepository.Salvar(dependet);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                response.CreateResponseInternalServerError("Não foi possível adicionar o dependente.");
+                return response;
+            }
+            
         }
 
+       
         public static List<UserMessage> MapToMessage(List<User> usuarios)
         {
             var lista = new List<UserMessage>();
