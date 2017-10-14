@@ -5,7 +5,7 @@ namespace Domain.Model.Models
 {
     public class User
     {
-        
+
         public virtual int Id { get; set; }
 
         public virtual string Name { get; set; }
@@ -32,12 +32,13 @@ namespace Domain.Model.Models
             };
         }
 
-        public virtual void UpdateUser(string name, string email, string genre, DateTime birth)
+        public virtual void UpdateUser(string name, string email, string genre, DateTime birth, Role role)
         {
             this.Name = name;
             this.Email = email;
             this.Genre = genre;
             this.Birth = birth;
+            this.Role = role;
         }
     }
 }

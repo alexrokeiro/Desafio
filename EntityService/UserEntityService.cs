@@ -104,7 +104,14 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                user.UpdateUser(request.name, request.Email, request.genre, request.Birth);
+                var role = roleRepositoty.GetById(request.Role);
+                if (role == null)
+                {
+                    response.CreateResponseBadRequest("Role não encontrada");
+                    return response;
+                }
+
+                user.UpdateUser(request.name, request.Email, request.genre, request.Birth, role);
                 
                 userRepositoty.Update(user);
                 return response;

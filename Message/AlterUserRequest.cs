@@ -30,6 +30,6 @@ namespace Domain.Message.Message
 
         [DataMember(Name = "role")]
         [Required(ErrorMessage = "Campo role é obrigatório.")]
-        public string Role { get; set; }
+        public int Role { get; set; }
     }
 }
