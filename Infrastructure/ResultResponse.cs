@@ -10,10 +10,6 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    class ResultResponse
-    {
-    }
-
     public class ResultResponse<TResponseMessage> : IHttpActionResult where TResponseMessage : BaseResponse
     {
         private BaseRequest requestMessage;

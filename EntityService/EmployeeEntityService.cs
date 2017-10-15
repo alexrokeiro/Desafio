@@ -55,10 +55,10 @@ namespace Domain.Implementations.EntityService.Imp
 
                 var employee = Employee.CreateEmployee(request.Name, request.Email, request.Genre, request.Birth, role);
                 EmployeeRepositoty.Save(employee);
-                
+                response.Retorno = new CreateEmployeeResponse() { IdEmployee = employee.Id };
                 return response;
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 response.CreateResponseInternalServerError("Não foi possivel adicionar o empregado.");
                 return response;
@@ -137,9 +137,9 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                var dependet = new Dependent() { Name = request.Name, IdUser = employee.Id };
-                dependentRepository.Save(dependet);
-
+                var dependent = new Dependent() { Name = request.Name, IdUser = employee.Id };
+                dependentRepository.Save(dependent);
+                response.Retorno = new AddDependentResponse() { IdDependent = dependent.Id };
                 return response;
             }
             catch (System.Exception)

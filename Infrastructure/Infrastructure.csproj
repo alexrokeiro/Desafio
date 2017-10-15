@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BaseRequest.cs" />
     <Compile Include="BaseResponse.cs" />
+    <Compile Include="EnumGenre.cs" />
     <Compile Include="IHttpActionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultResponse.cs" />

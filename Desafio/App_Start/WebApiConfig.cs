@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using DI;
 using Microsoft.Practices.Unity;
+using Infrastructure;
 
 namespace Desafio
 {

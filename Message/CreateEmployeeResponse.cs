@@ -6,7 +6,7 @@ namespace Domain.Message.Message
     [DataContract]
     public class CreateEmployeeResponse : BaseResponse
     {
-        [DataMember(Name = "Employee")]
-        public EmployeeMessage Employee { get; set; }
+        [DataMember(Name = "idEmployee")]
+        public int IdEmployee { get; set; }
     }
 }
