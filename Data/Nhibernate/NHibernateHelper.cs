@@ -13,7 +13,7 @@ namespace Data.Nhibernate
         {
             ISessionFactory sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                  .ConnectionString(@"Data Source=CHAMALEON\SQLDEV;initial catalog=cd_meiospagamento;persist security info=True;user id=sa;password=dbh8JVsQW4sJK4a4btvN;")
+                  .ConnectionString(@"Data Source=host;initial catalog=database;persist security info=True;user id=id;password=password;")
                               .ShowSql()
                 )
                .Mappings(m =>
