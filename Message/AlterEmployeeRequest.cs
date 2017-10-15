@@ -10,22 +10,21 @@ namespace Domain.Message.Message
     {
         [DataMember(Name = "id")]
         [Required(ErrorMessage = "Campo id é obrigatório.")]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [DataMember(Name = "name")]
         [Required(ErrorMessage = "Campo name é obrigatório.")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [DataMember(Name = "email")]
-        [Required(ErrorMessage = "Campo email é obrigatório.")]
         public string Email { get; set; }
 
         [DataMember(Name = "genre")]
         [Required(ErrorMessage = "Campo genre é obrigatório.")]
-        public string genre { get; set; }
+        [Range(0, 1, ErrorMessage = "Masculino - 0 ou Feminino  - 1")]
+        public int Genre { get; set; }
 
         [DataMember(Name = "birth")]
-        [Required(ErrorMessage = "Campo birth é obrigatório.")]
         public DateTime Birth { get; set; }
 
         [DataMember(Name = "role")]

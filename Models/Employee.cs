@@ -12,7 +12,7 @@ namespace Domain.Model.Models
 
         public virtual string Email { get; set; }
 
-        public virtual string Genre { get; set; }
+        public virtual int Genre { get; set; }
 
         public virtual DateTime Birth { get; set; }
 
@@ -20,7 +20,7 @@ namespace Domain.Model.Models
 
         public virtual IList<Dependent> Dependents { get; set; } = new List<Dependent>();
 
-        public static Employee CreateEmployee(string name, string email, string genre, DateTime birth, Role role)
+        public static Employee CreateEmployee(string name, string email, int genre, DateTime birth, Role role)
         {
             return new Employee()
             {
@@ -32,7 +32,7 @@ namespace Domain.Model.Models
             };
         }
 
-        public virtual void UpdateEmployee(string name, string email, string genre, DateTime birth, Role role)
+        public virtual void UpdateEmployee(string name, string email, int genre, DateTime birth, Role role)
         {
             this.Name = name;
             this.Email = email;

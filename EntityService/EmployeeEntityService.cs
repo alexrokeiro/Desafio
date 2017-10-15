@@ -6,6 +6,7 @@ using Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Domain.Implementations.EntityService.Imp
 {
@@ -37,7 +38,7 @@ namespace Domain.Implementations.EntityService.Imp
                 response.CreateResponseInternalServerError("Não foi possivel listar os empregados.");
                 return response;
             }
-            
+
         }
 
 
@@ -46,6 +47,26 @@ namespace Domain.Implementations.EntityService.Imp
             ResultResponse<CreateEmployeeResponse> response = new ResultResponse<CreateEmployeeResponse>(request);
             try
             {
+                if (request.Genre != 0 && request.Genre != 1)
+                {
+                    response.CreateResponseBadRequest("Gênero deve ser 1 - Masculino ou 2 - Feminino.");
+                    return response;
+                }
+
+                if (!ValidateEmail(request.Email))
+                {
+                    response.CreateResponseBadRequest("Email inválido.");
+                    return response;
+                }
+
+                if (request.Birth > DateTime.Now)
+                {
+
+                    response.CreateResponseBadRequest("Data de nascimento inválida.");
+                    return response;
+
+                }
+
                 var role = roleRepositoty.GetById(request.Role);
                 if (role == null)
                 {
@@ -72,7 +93,7 @@ namespace Domain.Implementations.EntityService.Imp
             ResultResponse<DeleteEmployeeResponse> response = new ResultResponse<DeleteEmployeeResponse>(request);
             try
             {
-                var employee = EmployeeRepositoty.GetById(request.id,true);
+                var employee = EmployeeRepositoty.GetById(request.id, true);
                 if (employee == null)
                 {
                     response.CreateResponseBadRequest("Empregado não encontrado.");
@@ -90,7 +111,7 @@ namespace Domain.Implementations.EntityService.Imp
                 response.CreateResponseInternalServerError("Não foi possível excluir o empregado.");
                 return response;
             }
-            
+
         }
 
         public ResultResponse<AlterEmployeeResponse> UpdateEmployee(AlterEmployeeRequest request)
@@ -98,7 +119,27 @@ namespace Domain.Implementations.EntityService.Imp
             ResultResponse<AlterEmployeeResponse> response = new ResultResponse<AlterEmployeeResponse>(request);
             try
             {
-                var employee = EmployeeRepositoty.GetById(request.id);
+                if (request.Genre != 0 && request.Genre != 1)
+                {
+                    response.CreateResponseBadRequest("Gênero deve ser 1 - Masculino ou 2 - Feminino.");
+                    return response;
+                }
+
+                if (!ValidateEmail(request.Email))
+                {
+                    response.CreateResponseBadRequest("Email inválido.");
+                    return response;
+                }
+
+                if (request.Birth > DateTime.Now)
+                {
+
+                    response.CreateResponseBadRequest("Data de nascimento inválida.");
+                    return response;
+
+                }
+
+                var employee = EmployeeRepositoty.GetById(request.Id);
                 if (employee == null)
                 {
                     response.CreateResponseBadRequest("Empregado não encontrado para o id informado.");
@@ -112,8 +153,8 @@ namespace Domain.Implementations.EntityService.Imp
                     return response;
                 }
 
-                employee.UpdateEmployee(request.name, request.Email, request.genre, request.Birth, role);
-                
+                employee.UpdateEmployee(request.Name, request.Email, request.Genre, request.Birth, role);
+
                 EmployeeRepositoty.Update(employee);
                 return response;
             }
@@ -122,7 +163,7 @@ namespace Domain.Implementations.EntityService.Imp
                 response.CreateResponseInternalServerError("Não foi possível alterar o empregado.");
                 return response;
             }
-            
+
         }
 
         public ResultResponse<AddDependentResponse> AddDependent(AddDependentRequest request)
@@ -147,7 +188,7 @@ namespace Domain.Implementations.EntityService.Imp
                 response.CreateResponseInternalServerError("Não foi possível adicionar o dependente.");
                 return response;
             }
-            
+
         }
 
         public ResultResponse<DeleteEmployeeResponse> DeleteDependent(DeleteEmployeeRequest request)
@@ -192,7 +233,7 @@ namespace Domain.Implementations.EntityService.Imp
             {
                 Birth = employee.Birth,
                 Email = employee.Email,
-                genre = employee.Genre,
+                genre = employee.Genre == 0 ? "Masculino" : "Feminino",
                 name = employee.Name,
                 id = employee.Id,
                 QuantidadeDependentes = employee.Dependents.Count(),
@@ -200,5 +241,14 @@ namespace Domain.Implementations.EntityService.Imp
             };
         }
 
+        public static bool ValidateEmail(string email)
+        {
+            Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
+
+            if (String.IsNullOrEmpty(email) || rg.IsMatch(email))
+                return true;
+
+            return false;
+        }
     }
 }

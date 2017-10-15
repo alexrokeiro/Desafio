@@ -13,15 +13,13 @@ namespace Domain.Message.Message
         public string Name { get; set; }
 
         [DataMember(Name = "email")]
-        [Required(ErrorMessage = "Campo email é obrigatório.")]
         public string Email { get; set; }
 
         [DataMember(Name = "genre")]
         [Required(ErrorMessage = "Campo genre é obrigatório.")]
-        public string Genre { get; set; }
+        public int Genre { get; set; }
 
         [DataMember(Name = "birth")]
-        [Required(ErrorMessage = "Campo birth é obrigatório.")]
         public DateTime Birth { get; set; }
 
         [DataMember(Name = "role")]

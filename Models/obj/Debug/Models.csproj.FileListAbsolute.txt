@@ -8,3 +8,11 @@ C:\Repos\Desafio\Models\bin\Debug\Models.pdb
 C:\Repos\Desafio\Models\obj\Debug\Models.dll
 C:\Repos\Desafio\Models\obj\Debug\Models.pdb
 C:\Repos\Desafio\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Repos\Desafio\Models\bin\Debug\Infrastructure.dll
+C:\Repos\Desafio\Models\bin\Debug\System.Web.Http.dll
+C:\Repos\Desafio\Models\bin\Debug\System.Net.Http.Formatting.dll
+C:\Repos\Desafio\Models\bin\Debug\Newtonsoft.Json.dll
+C:\Repos\Desafio\Models\bin\Debug\Infrastructure.pdb
+C:\Repos\Desafio\Models\bin\Debug\System.Web.Http.xml
+C:\Repos\Desafio\Models\bin\Debug\System.Net.Http.Formatting.xml
+C:\Repos\Desafio\Models\bin\Debug\Newtonsoft.Json.xml
