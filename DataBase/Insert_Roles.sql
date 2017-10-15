@@ -1,0 +1,5 @@
+INSERT INTO ROLE VALUES ('Analista de negócio')
+INSERT INTO ROLE VALUES ('Analista de sistemas')
+INSERT INTO ROLE VALUES ('Gerente de projetos')
+INSERT INTO ROLE VALUES ('Diretor de TI')
+INSERT INTO ROLE VALUES ('Recursos Humanos')

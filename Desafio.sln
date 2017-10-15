@@ -33,6 +33,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementations", "Implemen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{918E1B98-2265-4F02-BDB0-6A35E606BD7A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{979F2551-EF30-4470-AB66-35EB04865487}"
+	ProjectSection(SolutionItems) = preProject
+		DataBase\Create_Tables.sql = DataBase\Create_Tables.sql
+		DataBase\Insert_Roles.sql = DataBase\Insert_Roles.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
