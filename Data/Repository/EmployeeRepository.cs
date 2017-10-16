@@ -14,7 +14,11 @@ namespace Data.Repository
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                session.Save(usuario);
+                using (var tran = session.BeginTransaction())
+                {
+                    session.Save(usuario);
+                    tran.Commit();
+                }
             }
         }
 
